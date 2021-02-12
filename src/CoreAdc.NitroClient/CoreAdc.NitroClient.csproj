@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CoreAdc.NitroApi\CoreAdc.NitroApi.csproj" />
+      <ProjectReference Include="..\CoreAdc.NitroCommon\CoreAdc.NitroCommon.csproj" />
+      <ProjectReference Include="..\CoreAdc.NitroInterfaces\CoreAdc.NitroInterfaces.csproj" />
+      <ProjectReference Include="..\CoreAdc.NitroModel\CoreAdc.NitroModel.csproj" />
+    </ItemGroup>
+
+</Project>
