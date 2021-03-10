@@ -24,11 +24,11 @@ namespace CoreAdc.NitroValidator.Configuration.System.SystemBackup
         private async Task<bool> RemoteValidationAsync(INitroClient nitroClient, string filename, CancellationToken cancellationToken) {
             var command = new SystemBackupGetCommand(
                 nitroClient,
-                new SystemBackupGetRequest(filename)
+                new SystemBackupGetRequest(filename + ".tgz")
             );
 
             var result = await command.GetResponse();
-            return !(result.SystemBackups.Length > 0);
+            return result.SystemBackups != null;
         }
     }
 
