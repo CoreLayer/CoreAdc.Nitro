@@ -28,7 +28,7 @@ namespace CoreAdc.NitroValidator.Configuration.System.SystemBackup
             );
 
             var result = await command.GetResponse();
-            return result.SystemBackups != null;
+            return result.SystemBackups == null;
         }
     }
 
