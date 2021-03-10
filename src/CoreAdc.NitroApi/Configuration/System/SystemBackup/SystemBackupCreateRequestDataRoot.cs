@@ -3,7 +3,7 @@ using CoreAdc.NitroModel.Configuration.System.SystemBackup;
 
 namespace CoreAdc.NitroApi.Configuration.System.SystemBackup
 {
-    internal class SystemBackupCreateRequestDataRoot : INitroRequestDataRoot
+    public class SystemBackupCreateRequestDataRoot : INitroRequestDataRoot
     {
         public SystemBackupCreateRequestData[] SystemBackup { get; }
 

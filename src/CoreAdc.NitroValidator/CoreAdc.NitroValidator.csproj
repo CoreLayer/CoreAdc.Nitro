@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="10.0.0-preview2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CoreAdc.NitroClient\CoreAdc.NitroClient.csproj" />
+      <ProjectReference Include="..\CoreAdc.NitroCommands\CoreAdc.NitroCommands.csproj" />
+      <ProjectReference Include="..\CoreAdc.NitroModel\CoreAdc.NitroModel.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Configuration\Ns" />
+    </ItemGroup>
+
+</Project>
