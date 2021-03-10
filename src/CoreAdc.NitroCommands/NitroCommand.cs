@@ -43,7 +43,6 @@ namespace CoreAdc.NitroCommands
 
         public async Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
-
             var task = NitroClient.SendAsync(
                 await NitroRequest.GetHttpRequestMessageAsync().ConfigureAwait(false),
                 cancellationToken);

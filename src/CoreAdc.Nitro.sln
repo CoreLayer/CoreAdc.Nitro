@@ -28,6 +28,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdc.NitroCommonTests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdc.NitroModelTests", "..\tests\CoreAdc.NitroModelTests\CoreAdc.NitroModelTests.csproj", "{E1AE85BC-0656-454B-A6C1-D2986A4B57FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdc.NitroValidator", "CoreAdc.NitroValidator\CoreAdc.NitroValidator.csproj", "{6263AE11-F63A-41DE-92A3-7C23F1E87577}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdc.NitroValidatorTests", "..\tests\CoreAdc.NitroValidatorTests\CoreAdc.NitroValidatorTests.csproj", "{A29F17D4-C1FA-4AC6-AAA2-9D0821304B7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,8 @@ Global
 		{FCBB6BD0-95A5-4569-AB03-212D9A5A0DB6} = {6527C3B6-C1DA-4325-B0F6-18AE7ACFD791}
 		{458FDA76-8E3C-4512-A026-E7C2CCA979F9} = {6527C3B6-C1DA-4325-B0F6-18AE7ACFD791}
 		{E1AE85BC-0656-454B-A6C1-D2986A4B57FE} = {6527C3B6-C1DA-4325-B0F6-18AE7ACFD791}
+		{6263AE11-F63A-41DE-92A3-7C23F1E87577} = {CB76BF2F-C3B4-453C-AB6E-FE61CF72C3FA}
+		{A29F17D4-C1FA-4AC6-AAA2-9D0821304B7C} = {6527C3B6-C1DA-4325-B0F6-18AE7ACFD791}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{18331E05-8B60-4DD2-9BD4-6C95613EE728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -96,5 +102,13 @@ Global
 		{E1AE85BC-0656-454B-A6C1-D2986A4B57FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1AE85BC-0656-454B-A6C1-D2986A4B57FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1AE85BC-0656-454B-A6C1-D2986A4B57FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6263AE11-F63A-41DE-92A3-7C23F1E87577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6263AE11-F63A-41DE-92A3-7C23F1E87577}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6263AE11-F63A-41DE-92A3-7C23F1E87577}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6263AE11-F63A-41DE-92A3-7C23F1E87577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A29F17D4-C1FA-4AC6-AAA2-9D0821304B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A29F17D4-C1FA-4AC6-AAA2-9D0821304B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A29F17D4-C1FA-4AC6-AAA2-9D0821304B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A29F17D4-C1FA-4AC6-AAA2-9D0821304B7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
