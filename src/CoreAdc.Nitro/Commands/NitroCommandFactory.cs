@@ -3,7 +3,7 @@ using CoreAdc.Nitro.Interfaces;
 
 namespace CoreAdc.Nitro.Commands
 {
-    public class NitroCommandFactory
+    public static class NitroCommandFactory
     {
         public static T Create<T>(INitroClient nitroClient)
         {
@@ -78,10 +78,10 @@ namespace CoreAdc.Nitro.Commands
 
 
 
-        private static string GetNitroApiAssemblyName(string commandAssemblyName)
-        {
-            return commandAssemblyName.Replace("Commands", "Api");
-        }
+        // private static string GetNitroApiAssemblyName(string commandAssemblyName)
+        // {
+        //     return commandAssemblyName.Replace("Commands", "Api");
+        // }
 
         private static string GetNitroApiNamespaceName(string commandNamespaceName)
         {
@@ -98,96 +98,116 @@ namespace CoreAdc.Nitro.Commands
 
         private static INitroRequest CreateNitroRequestInstance(Type type)
         {
-            var nitroRequestAssemblyName = GetNitroApiAssemblyName(type.Assembly.FullName);
+            // var nitroRequestAssemblyName = GetNitroApiAssemblyName(type.Assembly.FullName);
             var nitroRequestTypeFullName = GetNitroApiNamespaceName(type.Namespace) + "." + GetNitroRequestTypeName(type.Name);
 
             try
             {
-                return (INitroRequest) Activator.CreateInstance(
-                    nitroRequestAssemblyName, 
-                    nitroRequestTypeFullName
-                    )?.Unwrap();
+                // return (INitroRequest) Activator.CreateInstance(
+                //     nitroRequestAssemblyName, 
+                //     nitroRequestTypeFullName
+                //     )?.Unwrap();
+                return (INitroRequest)Activator.CreateInstance(
+                    Type.GetType(nitroRequestTypeFullName)!
+                );
             }
             catch
             {
-                var message = nitroRequestTypeFullName + " not found in " + nitroRequestAssemblyName;
+                // var message = nitroRequestTypeFullName + " not found in " + nitroRequestAssemblyName;
+                var message = nitroRequestTypeFullName + " not found.";
                 throw new NotImplementedException(message);
             }
         }
 
         private static INitroRequest CreateNitroRequestInstance(Type type, string resourceName)
         {
-            var nitroRequestAssemblyName = GetNitroApiAssemblyName(type.Assembly.FullName);
+            // var nitroRequestAssemblyName = GetNitroApiAssemblyName(type.Assembly.FullName);
             var nitroRequestTypeFullName = GetNitroApiNamespaceName(type.Namespace) + "." + GetNitroRequestTypeName(type.Name);
 
             try
             {
+                // return (INitroRequest)Activator.CreateInstance(
+                //     nitroRequestAssemblyName,
+                //     nitroRequestTypeFullName,
+                //     false,
+                //     0,
+                //     null,
+                //     new object[] { resourceName },
+                //     null,
+                //     null
+                // )?.Unwrap();
                 return (INitroRequest)Activator.CreateInstance(
-                    nitroRequestAssemblyName,
-                    nitroRequestTypeFullName,
-                    false,
-                    0,
-                    null,
-                    new object[] { resourceName },
-                    null,
-                    null
-                )?.Unwrap();
+                    Type.GetType(nitroRequestTypeFullName)!,
+                    new object[] { resourceName }
+                );
             }
             catch
             {
-                var message = nitroRequestTypeFullName + " not found in " + nitroRequestAssemblyName;
+                // var message = nitroRequestTypeFullName + " not found in " + nitroRequestAssemblyName;
+                var message = nitroRequestTypeFullName + " not found.";
                 throw new NotImplementedException(message);
             }
         }
 
         private static INitroRequest CreateNitroRequestInstance(Type type, INitroRequestData nitroRequestData)
         {
-            var nitroRequestAssemblyName = GetNitroApiAssemblyName(type.Assembly.FullName);
+            // var nitroRequestAssemblyName = GetNitroApiAssemblyName(type.Assembly.FullName);
             var nitroRequestTypeFullName = GetNitroApiNamespaceName(type.Namespace) + "." + GetNitroRequestTypeName(type.Name);
 
             try
             {
+                // return (INitroRequest)Activator.CreateInstance(
+                //     nitroRequestAssemblyName,
+                //     nitroRequestTypeFullName,
+                //     false,
+                //     0,
+                //     null,
+                //     new object[] { nitroRequestData },
+                //     null,
+                //     null
+                // )?.Unwrap();
                 return (INitroRequest)Activator.CreateInstance(
-                    nitroRequestAssemblyName,
-                    nitroRequestTypeFullName,
-                    false,
-                    0,
-                    null,
-                    new object[] { nitroRequestData },
-                    null,
-                    null
-                )?.Unwrap();
+                    Type.GetType(nitroRequestTypeFullName)!,
+                    new object[] { nitroRequestData }
+                );
             }
             catch
             {
-                var message = nitroRequestTypeFullName + " not found in " + nitroRequestAssemblyName;
+                // var message = nitroRequestTypeFullName + " not found in " + nitroRequestAssemblyName;
+                var message = nitroRequestTypeFullName + " not found.";
                 throw new NotImplementedException(message);
             }
         }
 
         private static INitroRequest CreateNitroRequestInstance(Type type, INitroRequestData[] nitroRequestData)
         {
-            var nitroRequestAssemblyName = GetNitroApiAssemblyName(type.Assembly.FullName);
+            //var nitroRequestAssemblyName = GetNitroApiAssemblyName(type.Assembly.FullName);
             var nitroRequestTypeFullName = GetNitroApiNamespaceName(type.Namespace) + "." + GetNitroRequestTypeName(type.Name);
 
             try
             {
+                // return (INitroRequest)Activator.CreateInstance(
+                //     nitroRequestAssemblyName,
+                //     nitroRequestTypeFullName,
+                //     false,
+                //     0,
+                //     null,
+                //     new object[] { nitroRequestData },
+                //     null,
+                //     null
+                // )?.Unwrap();
                 return (INitroRequest)Activator.CreateInstance(
-                    nitroRequestAssemblyName,
-                    nitroRequestTypeFullName,
-                    false,
-                    0,
-                    null,
-                    new object[] { nitroRequestData },
-                    null,
-                    null
-                )?.Unwrap();
+                    Type.GetType(nitroRequestTypeFullName)!,
+                    new object[] { nitroRequestData }
+                );
             }
             catch
             {
-                var message = nitroRequestTypeFullName + " not found in " + nitroRequestAssemblyName;
+                // var message = nitroRequestTypeFullName + " not found in " + nitroRequestAssemblyName;
+                var message = nitroRequestTypeFullName + " not found.";
                 throw new NotImplementedException(message);
             }
         }
     }
 }
+// TODO - CLEANUP
