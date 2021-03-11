@@ -5,11 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentValidation" Version="10.0.0-preview2" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Configuration\Ns" />
+      <Folder Include="Models" />
     </ItemGroup>
 
 </Project>
