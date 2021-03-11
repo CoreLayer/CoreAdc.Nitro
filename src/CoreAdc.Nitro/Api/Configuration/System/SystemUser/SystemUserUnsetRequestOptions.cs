@@ -1,0 +1,4 @@
+﻿namespace CoreAdc.Nitro.Api.Configuration.System.SystemUser
+{
+    public class SystemUserUnsetRequestOptions : NitroUnsetRequestOptions { }
+}
