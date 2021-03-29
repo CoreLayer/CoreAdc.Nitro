@@ -12,4 +12,8 @@
       <Folder Include="Configuration\Ns" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\CoreAdc.Nitro\CoreAdc.Nitro.csproj" />
+    </ItemGroup>
+
 </Project>
