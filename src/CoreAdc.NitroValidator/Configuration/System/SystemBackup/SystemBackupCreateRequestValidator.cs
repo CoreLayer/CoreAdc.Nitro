@@ -27,7 +27,7 @@ namespace CoreAdc.NitroValidator.Configuration.System.SystemBackup
                 new SystemBackupGetRequest(filename + ".tgz")
             );
 
-            var result = await command.GetResponse();
+            var result = await command.GetNitroResponseAsync(cancellationToken);
             return result.SystemBackups == null;
         }
     }
