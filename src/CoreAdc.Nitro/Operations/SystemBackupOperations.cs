@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using CoreAdc.Nitro.Api.Configuration.System.SystemBackup;
 using CoreAdc.Nitro.Api.Configuration.System.SystemCmdPolicy;
 using CoreAdc.Nitro.Api.Configuration.System.SystemFile;
@@ -22,7 +23,7 @@ namespace CoreAdc.Nitro.Operations
             SystemBackupGetCmdPolicySpecification + "|" + SystemBackupCreateAndDeleteCmdPolicySpecification + "|" + SystemBackupDownloadCmdPolicySpecification;
 
 
-        public static async Task<SystemCmdPolicyAddResponse> CreateSystemCmdPolicyAsync(INitroClient nitroClient, string systemCmdPolicyName)
+        public static async Task<SystemCmdPolicyAddResponse> CreateSystemCmdPolicyAsync(INitroClient nitroClient, string systemCmdPolicyName, CancellationToken cancellationToken)
         {
             var systemCmdPolicyAddCommand =
                 NitroCommandFactory.Create<SystemCmdPolicyAddCommand>(
@@ -32,70 +33,70 @@ namespace CoreAdc.Nitro.Operations
                         SystemCmdPolicyAction.Allow,
                         SystemBackupOperationsCmdPolicySpecification)
                     );
-            return await systemCmdPolicyAddCommand.GetResponse();
+            return await systemCmdPolicyAddCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        public static async Task<SystemCmdPolicyDeleteResponse> DeleteSystemCmdPolicyAsync(INitroClient nitroClient, string systemCmdPolicyName)
+        public static async Task<SystemCmdPolicyDeleteResponse> DeleteSystemCmdPolicyAsync(INitroClient nitroClient, string systemCmdPolicyName, CancellationToken cancellationToken)
         {
             var systemCmdPolicyDeleteCommand =
                 NitroCommandFactory.Create<SystemCmdPolicyDeleteCommand>(
                     nitroClient,
                     systemCmdPolicyName
                     );
-            return await systemCmdPolicyDeleteCommand.GetResponse();
+            return await systemCmdPolicyDeleteCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        public static async Task<SystemBackupGetResponse> GetAsync(INitroClient nitroClient, string fileName)
+        public static async Task<SystemBackupGetResponse> GetAsync(INitroClient nitroClient, string fileName, CancellationToken cancellationToken)
         {
             var systemBackupGetCommand = NitroCommandFactory.Create<SystemBackupGetCommand>(
                 nitroClient, 
                 new SystemBackupGetRequestOptions(fileName)
                 );
-            return await systemBackupGetCommand.GetResponse();
+            return await systemBackupGetCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        public static async Task<SystemBackupGetResponse> GetAllAsync(INitroClient nitroClient)
+        public static async Task<SystemBackupGetResponse> GetAllAsync(INitroClient nitroClient, CancellationToken cancellationToken)
         {
             var systemBackupGetCommand = NitroCommandFactory.Create<SystemBackupGetCommand>(nitroClient);
-            return await systemBackupGetCommand.GetResponse();
+            return await systemBackupGetCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        public static async Task<SystemBackupCreateResponse> CreateAsync(INitroClient nitroClient, SystemBackupLevel level, string fileName)
+        public static async Task<SystemBackupCreateResponse> CreateAsync(INitroClient nitroClient, SystemBackupLevel level, string fileName, CancellationToken cancellationToken)
         {
             var systemBackupCreateCommand = NitroCommandFactory.Create<SystemBackupCreateCommand>(
                 nitroClient, 
                 new SystemBackupCreateRequestData(level, fileName)
                 );
-            return await systemBackupCreateCommand.GetResponse();
+            return await systemBackupCreateCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        public static async Task<SystemBackupCreateResponse> CreateAsync(INitroClient nitroClient, string fileName)
+        public static async Task<SystemBackupCreateResponse> CreateAsync(INitroClient nitroClient, string fileName, CancellationToken cancellationToken)
         {
             var systemBackupCreateCommand = NitroCommandFactory.Create<SystemBackupCreateCommand>(
                 nitroClient,
                 new SystemBackupCreateRequestData(SystemBackupLevel.Full, fileName)
             );
-            return await systemBackupCreateCommand.GetResponse();
+            return await systemBackupCreateCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        public static async Task<SystemBackupDeleteResponse> DeleteAsync(INitroClient nitroClient, string fileName)
+        public static async Task<SystemBackupDeleteResponse> DeleteAsync(INitroClient nitroClient, string fileName, CancellationToken cancellationToken)
         {
             var systemBackupDeleteCommand = NitroCommandFactory.Create<SystemBackupDeleteCommand>(
                 nitroClient,
                 fileName
                 );
 
-            return await systemBackupDeleteCommand.GetResponse();
+            return await systemBackupDeleteCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        public static async Task<SystemFileGetResponse> DownloadAsBase64Async(INitroClient nitroClient, string fileName)
+        public static async Task<SystemFileGetResponse> DownloadAsBase64Async(INitroClient nitroClient, string fileName, CancellationToken cancellationToken)
         {
             var systemFileGetCommand = NitroCommandFactory.Create<SystemFileGetCommand>(
                 nitroClient, 
                 new SystemFileGetRequestOptions("/var/ns_sys_backup", fileName)
                 );
 
-            return await systemFileGetCommand.GetResponse();
+            return await systemFileGetCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
     }
 }

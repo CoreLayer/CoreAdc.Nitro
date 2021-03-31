@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using CoreAdc.Nitro.Api.Configuration.System.SystemUser;
 using CoreAdc.Nitro.Api.Configuration.System.SystemUserSystemCmdPolicyBinding;
 using CoreAdc.Nitro.Commands;
@@ -13,8 +14,7 @@ namespace CoreAdc.Nitro.Operations.SystemUser
     public class SystemUserOperations
     {
 
-        public static async Task<SystemUserAddResponse> AddAsync(INitroClient nitroClient,
-            SystemUserAddOperationData userAddOperationData)
+        public static async Task<SystemUserAddResponse> AddAsync(INitroClient nitroClient, SystemUserAddOperationData userAddOperationData, CancellationToken cancellationToken)
         {
             var systemUserAddCommand =
                 NitroCommandFactory.Create<SystemUserAddCommand>(
@@ -31,55 +31,54 @@ namespace CoreAdc.Nitro.Operations.SystemUser
                         AllowedManagementInterface = userAddOperationData.AllowedManagementInterface
                     }
                 );
-            return await systemUserAddCommand.GetResponse();
+            return await systemUserAddCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        public static async Task<SystemUserDeleteResponse> DeleteAsync(INitroClient nitroClient,
-            string username)
+        public static async Task<SystemUserDeleteResponse> DeleteAsync(INitroClient nitroClient, string username, CancellationToken cancellationToken)
         {
             var systemUserDeleteCommand =
                 NitroCommandFactory.Create<SystemUserDeleteCommand>(
                     nitroClient,
                     username
                 );
-            return await systemUserDeleteCommand.GetResponse();
+            return await systemUserDeleteCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        public static async Task<SystemUserGetResponse> GetAsync(INitroClient nitroClient, string username)
+        public static async Task<SystemUserGetResponse> GetAsync(INitroClient nitroClient, string username, CancellationToken cancellationToken)
         {
             var systemUserGetCommand = NitroCommandFactory.Create<SystemUserGetCommand>(
                 nitroClient,
                 new SystemUserGetRequestOptions(username)
                 );
-            return await systemUserGetCommand.GetResponse();
+            return await systemUserGetCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        public static async Task<SystemUserGetResponse> GetAllAsync(INitroClient nitroClient)
+        public static async Task<SystemUserGetResponse> GetAllAsync(INitroClient nitroClient, CancellationToken cancellationToken)
         {
             var systemUserGetCommand = NitroCommandFactory.Create<SystemUserGetCommand>(nitroClient);
-            return await systemUserGetCommand.GetResponse();
+            return await systemUserGetCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public static async Task<SystemUserSystemCmdPolicyBindingAddResponse> BindSystemCmdPolicyAsync(
-            INitroClient nitroClient, string username, string policyName, double priority)
+            INitroClient nitroClient, string username, string policyName, double priority, CancellationToken cancellationToken)
         {
             var systemUserSystemCmdPolicyBindingAddCommand =
                 NitroCommandFactory.Create<SystemUserSystemCmdPolicyBindingAddCommand>(
                     nitroClient,
                     new SystemUserSystemCmdPolicyBindingAddRequestData(username, policyName, priority)
                 );
-            return await systemUserSystemCmdPolicyBindingAddCommand.GetResponse();
+            return await systemUserSystemCmdPolicyBindingAddCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public static async Task<SystemUserSystemCmdPolicyBindingDeleteResponse> UnbindSystemCmdPolicyAsync(
-            INitroClient nitroClient, string username, string policyName)
+            INitroClient nitroClient, string username, string policyName, CancellationToken cancellationToken)
         {
             var systemUserSystemCmdPolicyBindingDeleteCommand =
                 NitroCommandFactory.Create<SystemUserSystemCmdPolicyBindingDeleteCommand>(
                     nitroClient,
                     new SystemUserSystemCmdPolicyBindingDeleteRequestOptions(username, policyName)
                 );
-            return await systemUserSystemCmdPolicyBindingDeleteCommand.GetResponse();
+            return await systemUserSystemCmdPolicyBindingDeleteCommand.GetNitroResponseAsync(cancellationToken).ConfigureAwait(false);
         }
     }
 }

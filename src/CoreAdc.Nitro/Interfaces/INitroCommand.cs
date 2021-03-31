@@ -8,8 +8,7 @@ namespace CoreAdc.Nitro.Interfaces
     {
         INitroClient NitroClient { get; }
         INitroRequest NitroRequest { get; }
-        // Task<ValidationResult> ValidateAsync(CancellationToken cancellationToken);
-        Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken);
-        Task<T> GetResponse();
+        Task<HttpResponseMessage> GetHttpResponseAsync(CancellationToken cancellationToken);
+        Task<T> GetNitroResponseAsync(CancellationToken cancellationToken);
     }
 }

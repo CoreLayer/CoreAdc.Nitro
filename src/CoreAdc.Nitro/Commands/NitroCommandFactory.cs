@@ -67,17 +67,11 @@ namespace CoreAdc.Nitro.Commands
                 nitroRequest);
         }
 
-
-
-
         private static dynamic CreateCommandInstance(Type type, INitroClient nitroClient, INitroRequest nitroRequest)
         {
             return Activator.CreateInstance(type, new object[] {nitroClient, nitroRequest});
-        }
-
-
-
-
+        } 
+        
         // private static string GetNitroApiAssemblyName(string commandAssemblyName)
         // {
         //     return commandAssemblyName.Replace("Commands", "Api");
@@ -92,10 +86,7 @@ namespace CoreAdc.Nitro.Commands
         {
             return commandTypeName.Replace("Command", "Request");
         }
-
-
-
-
+        
         private static INitroRequest CreateNitroRequestInstance(Type type)
         {
             // var nitroRequestAssemblyName = GetNitroApiAssemblyName(type.Assembly.FullName);
@@ -210,4 +201,3 @@ namespace CoreAdc.Nitro.Commands
         }
     }
 }
-// TODO - CLEANUP
