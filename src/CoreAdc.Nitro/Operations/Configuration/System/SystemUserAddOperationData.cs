@@ -1,6 +1,6 @@
 ﻿using CoreAdc.Nitro.Models.Configuration.System.SystemUser;
 
-namespace CoreAdc.Nitro.Operations.SystemUser
+namespace CoreAdc.Nitro.Operations.Configuration.System
 {
     public class SystemUserAddOperationData
     {

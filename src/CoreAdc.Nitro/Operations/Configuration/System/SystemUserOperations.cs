@@ -9,9 +9,9 @@ using CoreAdc.Nitro.Interfaces;
 using CoreAdc.Nitro.Models.Configuration.System.SystemUser;
 using CoreAdc.Nitro.Models.Configuration.System.SystemUserSystemCmdPolicyBinding;
 
-namespace CoreAdc.Nitro.Operations.SystemUser
+namespace CoreAdc.Nitro.Operations.Configuration.System
 {
-    public class SystemUserOperations
+    public static class SystemUserOperations
     {
 
         public static async Task<SystemUserAddResponse> AddAsync(INitroClient nitroClient, SystemUserAddOperationData userAddOperationData, CancellationToken cancellationToken)
