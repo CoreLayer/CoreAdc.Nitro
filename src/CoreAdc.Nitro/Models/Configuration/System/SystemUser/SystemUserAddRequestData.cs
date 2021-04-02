@@ -27,6 +27,7 @@ namespace CoreAdc.Nitro.Models.Configuration.System.SystemUser
         public double MaximumUserSessions { get; set; } = 20;
 
         [JsonPropertyName("allowedmanagementinterface")]
-        public string[] AllowedManagementInterface { get; set; } = {"CLI", "API"};
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string[] AllowedManagementInterface { get; set; }
     }
 }

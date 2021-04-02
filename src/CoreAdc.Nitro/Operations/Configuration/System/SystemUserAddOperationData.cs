@@ -19,10 +19,6 @@ namespace CoreAdc.Nitro.Operations.Configuration.System
 
         public double MaximumUserSessions { get; set; } = 20;
 
-        public string[] AllowedManagementInterface { get; set; } =
-        {
-            SystemUserAllowedManagementInterface.Api.ToString(),
-            SystemUserAllowedManagementInterface.Api.ToString()
-        };
+        public string[] AllowedManagementInterface { get; set; }
     }
 }
